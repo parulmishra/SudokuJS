@@ -2,7 +2,6 @@ function Sudoku(board)
 {
   this.board = board;
 }
-var arr = [1,2,3,4,5,6,7,8,9];
 var board = [];
 for(var i=0; i<9; i++)
 {
@@ -35,10 +34,10 @@ CheckValidRow = function()
 };
 CheckValidColumn = function()
 {
-  for (let x = 0; x < 9; x++)
+  for (var x = 0; x < 9; x++)
   { // columns
     uniques = [];
-    for (let i = 0; i < 9; i++)
+    for (var i = 0; i < 9; i++)
     { // rows
 	  if(board[i][x] == 0)
 			continue;
@@ -84,8 +83,8 @@ CheckValidBox = function()
 CheckIsValid = function()
 {
 	return (CheckValidRow() && CheckValidColumn() && CheckValidBox());
-}
-GenerateBoard = function(var x, var y)
+};
+GenerateBoard = function(x,y)
 {
 	var nextx = x; 
 	var nexty = y;
