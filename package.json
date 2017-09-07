@@ -1,7 +1,6 @@
 {
   "name": "sudoku",
   "version": "1.0.0",
-  "description": "",
   "main": "gulpfile.js",
   "scripts": {
     "test": "jasmine"
@@ -30,5 +29,14 @@
     "karma-jquery": "^0.2.2",
     "vinyl-source-stream": "^1.1.0",
     "watchify": "^3.9.0"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/parulmishra/SudokuJS.git"
+  },
+  "bugs": {
+    "url": "https://github.com/parulmishra/SudokuJS/issues"
+  },
+  "homepage": "https://github.com/parulmishra/SudokuJS#readme",
+  "description": ""
 }

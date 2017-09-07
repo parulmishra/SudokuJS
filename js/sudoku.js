@@ -19,6 +19,8 @@ CheckValidRow = function()
     var uniques = [];
     for (var i = 0; i < 9; i++)
     {
+	  if(board[x][i] == 0)
+			continue;
       if (uniques.includes(board[x][i]))
       {
         return false;
@@ -38,6 +40,8 @@ CheckValidColumn = function()
     uniques = [];
     for (let i = 0; i < 9; i++)
     { // rows
+	  if(board[i][x] == 0)
+			continue;
       if (uniques.includes(board[i][x]))
       {
         return false;
@@ -52,102 +56,57 @@ CheckValidColumn = function()
 };
 CheckValidBox = function()
 {
-  for(var box = 0; box < 9; box++)
+  for(var row = 0; row < 9; row += 3)
   {
-    uniques = [];
-    debugger;
-    for(var row = Math.floor((box / 3)) * 3, stopAtRow = row + 3; row < stopAtRow; row++)
+    for(var col = 0; col < 9; col += 3)
     {
-      for(var col = (box % 3) * 3, stopAt = col + 3; col < stopAt; col++)
+	  uniques = [];
+      for(var rowstart = row; rowstart < row+3; rowstart++)
       {
-        if(uniques.includes(board[row][col]))
-        {
-          return false;
-        }
-        else
-        {
-          uniques.push(board[row][col]);
-        }
+		for(var colstart = col; colstart < col+3; colstart++)
+		{
+			if(board[rowstart][colstart] == 0)
+				continue;
+			if(uniques.includes(board[rowstart][colstart]))
+			{
+			  return false;
+			}
+			else
+			{
+			  uniques.push(board[rowstart][colstart]);
+			}
+		}
       }
     }
   }
   return true;
 };
-GenerateBoard = function()
+CheckIsValid = function()
 {
-  for(var i=0; i<9; i++)
+	return (CheckValidRow() && CheckValidColumn() && CheckValidBox());
+}
+GenerateBoard = function(var x, var y)
+{
+	var nextx = x; 
+	var nexty = y;
+	if(y < 9)
+	  nexty++;
+    else if (y == 9)
+	{
+	  nexty = 0;
+	  if(x == 9)
+		return false;
+	  nextx++;
+	}
+  for(var i = 1; i <= 9; i++)
   {
-    for(var j=0; j<9;)
-    {
-      for(var k=0; k<arr.length;)
-      {
-        if(board[i][j] != arr[k])
-        {
-          // if(CheckValidRow() == true && CheckValidColumn() == true && CheckValidBox() == true)
-          // {
-            board[i][j] = arr[k];
-            k++;
-            j++;
-          //}
-       }
-     }
-   }
- }
+	  board[x][y] = i;
+	  if(CheckIsValid() == true && GenerateBoard(nextx, nexty) == true)
+	  {
+		  return true;
+	  }
+  }
+  board[x][y] = 0;
+  return false;
 };
-//   this.checkWin = function() {
-//     //ROW CHECKER
-//     for (var x = 0; x < board.length; x++)
-//     {
-//       var uniques = [];
-//       for (var i = 0; i < board[x].length; i++)
-//       {
-//         if (uniques.includes(board[x][i]))
-//         {
-//           return false;
-//         }
-//         else {
-//           uniques.push(board[x][i]);
-//         }
-//       }
-//     }
-//     //COLUMN CHECKER
-//     for (let x = 0; x < board.length; x++) { // columns
-//       uniques = [];
-//       for (let i = 0; i < board.length; i++) { // rows
-//         if (uniques.includes(board[i][x])) {
-//           return false;
-//         }
-//         else {
-//           uniques.push(board[i][x]);
-//         }
-//       }
-//     }
-//   //BOX CHECKER
-//     for(var box = 0; box < board.length; box++)
-//     {
-//       uniques = [];
-//       debugger;
-//       for(var row = Math.floor((box / 3)) * 3, stopAtRow = row + 3; row < stopAtRow; row++)
-//       {
-//         for(var col = (box % 3) * 3, stopAt = col + 3; col < stopAt; col++)
-//         {
-//           if(uniques.includes(board[row][col]))
-//           {
-//             return false;
-//           }
-//           else
-//           {
-//             uniques.push(board[row][col]);
-//           }
-//         }
-//       }
-//     }
-//     return true;
-//   }
-// };
-
-// Sudoku.prototype.CheckEmptyPositions = function()
-// {
-//
-// }
 exports.sudokuModule = Sudoku;
