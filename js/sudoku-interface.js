@@ -1,7 +1,6 @@
 var Sudoku = require('./../js/sudoku.js').sudokuModule;
 
 $(document).ready(function() {
-	
 	var newSudoku = new Sudoku();
 	
 	$("#generate").submit(function(event) {

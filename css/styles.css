@@ -2,6 +2,19 @@ body
 {
 background-color: #FAFAFA
 }
+h1
+{
+	font-size: 50px;
+	color: white;
+}
+#header
+{
+	padding-top: 10px;
+	padding-bottom: 30px;
+	background-color: #600000;
+	height: 80px;
+	margin-bottom: 30px;
+}
 table 
 {
 border: 2px solid #000000;
@@ -24,8 +37,19 @@ font-size: 24px;
 background-color: #FFFFFF;
 outline: none;
 } 
-btn
+button
 {
+	margin-left: 150px;
+	margin-top: 20px;
+	margin-right: 150px;
+	font-size: 40px;
 	padding: 5px;
 	margin-left: 200px;
+	color: white;
+	background-color: #600000;
+}
+#result
+{
+	font-size: 40px;
+	margin-bottom: 50px;
 }
