@@ -6,7 +6,7 @@
 
 ## Description
 
-_This application generates a sudoku board with some positions empty and checks whether user inputs the correct values or not. This applications implements the backtracking algorithm for board generation. 
+_This application generates a sudoku board with some positions empty and checks whether user inputs the correct values or not. This applications implements the backtracking algorithm for board generation._ 
 
 | Behavior  | Input  | Output  |
 |---|---|---|
