@@ -1,9 +1,12 @@
 var Sudoku = require('./../js/sudoku.js').sudokuModule;
 
 $(document).ready(function() {
+	$("#hide_button").hide();
 	var newSudoku = new Sudoku();
 	
 	$("#generate").submit(function(event) {
+		$("#hide_button").hide();
+		$("#result").show();
 		event.preventDefault();
 		var fillBoard = [];
 		for(var p = 0; p < 9; p++)
@@ -45,6 +48,8 @@ $(document).ready(function() {
 	
 	$("#play").click(function()
 	{
+		$("#result").hide();
+		$("#hide_button").show();
 		var uniques = newSudoku.GenerateRandom(1,9,4); 
 	
 		board[0][0] = uniques[0];
